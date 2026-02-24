@@ -259,15 +259,33 @@ main {
   overflow: hidden;
 }
 .cardgit {
-  background: var(--bg-card);
-  border-radius: 15px;
-  padding: 30px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(8px);
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cardgit h3 i {
+  margin-right: 8px;
+}
+
+.btn-git {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 25px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, #181717, #333);
+  color: #fff;
   transition: all 0.4s ease;
-  position: relative;
-  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-git:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  background: linear-gradient(135deg, #333, #181717);
 }
 
 
