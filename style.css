@@ -480,3 +480,27 @@ footer {
         margin: 5px;
     }
 }
+/* ===== FIX BOTÃO GITHUB ===== */
+.cardgit .btn-git {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  padding: 14px 28px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 1px;
+  background-color: #181717;
+  color: #ffffff;
+  border: 2px solid #333;
+  transition: all 0.4s ease;
+  cursor: pointer;
+}
+
+.cardgit .btn-git:hover {
+  background-color: #24292e;
+  border-color: #00ffff;
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 255, 255, 0.4);
+}
