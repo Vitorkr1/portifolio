@@ -261,6 +261,7 @@ main {
 .cardgit {
   display: flex;
   flex-direction: column;
+  align-items: center; /* centraliza tudo */
   justify-content: center;
 }
 
@@ -268,24 +269,25 @@ main {
   margin-right: 8px;
 }
 
-.btn-git {
+.cardgit a.btn-git {
   display: inline-block;
   margin-top: 20px;
-  padding: 12px 25px;
-  border-radius: 10px;
+  padding: 14px 28px;
+  border-radius: 12px;
   text-decoration: none;
   font-weight: 600;
   letter-spacing: 1px;
-  background: linear-gradient(135deg, #181717, #333);
+  background: #181717;
   color: #fff;
-  transition: all 0.4s ease;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 2px solid #333;
+  transition: 0.4s ease;
 }
 
-.btn-git:hover {
+.cardgit a.btn-git:hover {
+  background: #24292e;
+  border-color: #00ffff;
   transform: translateY(-4px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-  background: linear-gradient(135deg, #333, #181717);
+  box-shadow: 0 10px 25px rgba(0,255,255,0.4);
 }
 
 
@@ -407,7 +409,7 @@ main {
   /* SUAVIZA */
   transition: transform .35s ease, box-shadow .35s ease;
 }
-tela::-webkit-scrollbar {
+#tela::-webkit-scrollbar {
   display: none;
 }
 
@@ -479,28 +481,4 @@ footer {
         padding: 10px 20px;
         margin: 5px;
     }
-}
-/* ===== FIX BOTÃO GITHUB ===== */
-.cardgit .btn-git {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 20px;
-  padding: 14px 28px;
-  border-radius: 12px;
-  text-decoration: none;
-  font-weight: 600;
-  letter-spacing: 1px;
-  background-color: #181717;
-  color: #ffffff;
-  border: 2px solid #333;
-  transition: all 0.4s ease;
-  cursor: pointer;
-}
-
-.cardgit .btn-git:hover {
-  background-color: #24292e;
-  border-color: #00ffff;
-  transform: translateY(-4px);
-  box-shadow: 0 10px 25px rgba(0, 255, 255, 0.4);
 }
