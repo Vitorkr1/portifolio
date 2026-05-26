@@ -3,32 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sua Oportunidade Começa Aqui! - Estágios e Jovem Aprendiz</title>
+    <title>Sua Oportunidade Começa Aqui - Estágios e Jovem Aprendiz</title>
     <style>
         :root {
             --primary-blue: #0047AB;
+            --primary-blue-dark: #003580;
             --accent-yellow: #FFD700;
             --accent-orange: #FF8C00;
+            --accent-orange-light: #FFA500;
             --bg-dark: #0a0a0a;
+            --bg-darker: #050505;
             --text-white: #ffffff;
-            --card-bg: rgba(255, 255, 255, 0.05);
+            --text-light: #e0e0e0;
+            --card-bg: rgba(255, 255, 255, 0.08);
+            --card-bg-hover: rgba(255, 255, 255, 0.12);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--bg-dark);
+            background: linear-gradient(135deg, var(--bg-darker) 0%, #0f0f1e 50%, var(--bg-dark) 100%);
             color: var(--text-white);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
             line-height: 1.6;
             overflow-x: hidden;
+            min-height: 100vh;
         }
 
-        /* Estilo inspirado na imagem (efeito de luz e contraste) */
+        /* Efeito de fundo animado */
         body::before {
             content: '';
             position: fixed;
@@ -36,69 +46,120 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 20% 30%, rgba(0, 71, 171, 0.2) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 70%, rgba(255, 140, 0, 0.15) 0%, transparent 50%);
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(0, 71, 171, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255, 140, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.05) 0%, transparent 60%);
             z-index: -1;
+            pointer-events: none;
         }
 
+        /* Header */
         header {
-            padding: 4rem 2rem;
+            padding: 5rem 2rem 3rem;
             text-align: center;
-            background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, transparent 100%);
+            background: linear-gradient(180deg, rgba(0, 71, 171, 0.1) 0%, transparent 100%);
             position: relative;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.1);
         }
 
         .hero-title {
-            font-size: 3.5rem;
+            font-size: clamp(2rem, 8vw, 4rem);
             font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: -1px;
+            letter-spacing: -1.5px;
             margin-bottom: 1rem;
-            line-height: 1;
+            line-height: 1.1;
+            background: linear-gradient(135deg, var(--text-white) 0%, var(--text-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .hero-title span {
             display: block;
-            color: var(--accent-yellow);
-            text-shadow: 2px 2px 10px rgba(255, 215, 0, 0.5);
+            background: linear-gradient(135deg, var(--accent-yellow) 0%, var(--accent-orange-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+            filter: drop-shadow(0 0 20px rgba(255, 140, 0, 0.2));
         }
 
-        .warning-banner {
-            background-color: var(--accent-yellow);
-            color: #000;
-            padding: 0.5rem 2rem;
-            font-weight: bold;
-            transform: rotate(-2deg);
+        .subtitle {
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            color: var(--text-light);
+            margin-top: 1.5rem;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-button {
             display: inline-block;
-            margin: 1rem 0;
-            font-size: 1.2rem;
-            box-shadow: 5px 5px 0px var(--accent-orange);
+            margin-top: 2rem;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-dark) 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: 2px solid var(--accent-yellow);
+            box-shadow: 0 8px 32px rgba(0, 71, 171, 0.3);
+            cursor: pointer;
         }
 
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 48px rgba(255, 215, 0, 0.4);
+            background: linear-gradient(135deg, var(--primary-blue-dark) 0%, var(--primary-blue) 100%);
+        }
+
+        /* Container */
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 2rem;
         }
 
+        /* Section Title */
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            text-align: center;
+            margin: 4rem 0 3rem;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, var(--accent-yellow) 0%, var(--accent-orange) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Grid */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            gap: 2.5rem;
+            margin-bottom: 4rem;
         }
 
+        /* App Card */
         .app-card {
             background: var(--card-bg);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 15px;
-            padding: 2rem;
-            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            height: 100%;
+            group: card;
         }
 
         .app-card::before {
@@ -106,234 +167,394 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 5px;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue) 0%, var(--accent-yellow) 100%);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .app-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
             height: 100%;
-            background: var(--primary-blue);
+            background: radial-gradient(circle at 30% 30%, rgba(255, 215, 0, 0.1) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
         }
 
         .app-card:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.1);
-            border-color: var(--accent-yellow);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transform: translateY(-12px);
+            background: var(--card-bg-hover);
+            border-color: rgba(255, 215, 0, 0.3);
+            box-shadow: 
+                0 20px 60px rgba(0, 71, 171, 0.2),
+                0 0 40px rgba(255, 215, 0, 0.1);
+        }
+
+        .app-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .app-card:hover::after {
+            opacity: 1;
+        }
+
+        .app-card-content {
+            position: relative;
+            z-index: 1;
         }
 
         .app-card h3 {
             color: var(--accent-yellow);
-            font-size: 1.5rem;
+            font-size: clamp(1.3rem, 3vw, 1.8rem);
             margin-bottom: 1rem;
             text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px;
         }
 
         .app-card p {
             font-size: 0.95rem;
-            color: #ccc;
+            color: var(--text-light);
             margin-bottom: 1.5rem;
+            line-height: 1.7;
         }
 
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 1.5rem;
-            background: var(--primary-blue);
+        .app-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.9rem 1.8rem;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-dark) 100%);
             color: white;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            gap: 0.5rem;
+            align-self: flex-start;
+        }
+
+        .app-link:hover {
+            background: linear-gradient(135deg, var(--primary-blue-dark) 0%, var(--primary-blue) 100%);
+            border-color: var(--accent-yellow);
+            transform: translateX(5px);
+            box-shadow: 0 8px 24px rgba(0, 71, 171, 0.3);
+        }
+
+        .app-link::after {
+            content: '→';
             font-weight: bold;
-            text-align: center;
-            transition: background 0.3s;
-            border-bottom: 3px solid rgba(0,0,0,0.3);
         }
 
-        .btn:hover {
-            background: #0056d2;
-        }
-
-        .qr-section {
-            margin-top: 5rem;
-            background: rgba(255, 255, 255, 0.03);
+        /* Stats Section */
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 5rem 0;
             padding: 3rem;
+            background: rgba(0, 71, 171, 0.05);
             border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            border: 2px dashed rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.1);
         }
 
-        .qr-text h2 {
-            font-size: 2rem;
-            color: var(--accent-orange);
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--accent-yellow) 0%, var(--accent-orange) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 6rem;
+            padding: 3rem 2rem;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 71, 171, 0.1) 100%);
+            border-top: 1px solid rgba(255, 215, 0, 0.1);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-text {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, var(--accent-yellow) 0%, var(--accent-orange) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 3s ease-in-out infinite;
             margin-bottom: 1rem;
         }
 
-        .qr-placeholder {
-            width: 200px;
-            height: 200px;
-            background: white;
-            padding: 10px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 20px rgba(255,255,255,0.2);
+        .footer-description {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-top: 1rem;
         }
 
-        .qr-placeholder img {
-            max-width: 100%;
+        @keyframes glow {
+            0%, 100% {
+                filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3));
+            }
+            50% {
+                filter: drop-shadow(0 0 20px rgba(255, 140, 0, 0.5));
+            }
         }
 
-        footer {
-            margin-top: 5rem;
-            padding: 2rem;
-            text-align: center;
-            background: #000;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .float-text {
-            font-family: 'Courier New', Courier, monospace;
-            font-weight: bold;
-            color: var(--accent-yellow);
-            letter-spacing: 2px;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { opacity: 0.6; }
-            50% { opacity: 1; }
-            100% { opacity: 0.6; }
-        }
-
+        /* Responsividade */
         @media (max-width: 768px) {
-            .hero-title { font-size: 2.5rem; }
-            .grid { grid-template-columns: 1fr; }
+            header {
+                padding: 3rem 1.5rem 2rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .stats-section {
+                grid-template-columns: 1fr;
+                padding: 2rem;
+            }
+
+            .app-card {
+                padding: 1.5rem;
+            }
+
+            .app-card h3 {
+                font-size: 1.3rem;
+            }
+
+            .cta-button {
+                padding: 0.8rem 2rem;
+                font-size: 0.9rem;
+            }
         }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 1.5rem;
+                letter-spacing: -0.5px;
+            }
+
+            .subtitle {
+                font-size: 0.9rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .app-card {
+                padding: 1.2rem;
+            }
+
+            .app-card h3 {
+                font-size: 1.1rem;
+            }
+
+            .app-card p {
+                font-size: 0.85rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+                margin: 2rem 0 1.5rem;
+            }
+        }
+
+        /* Animação de entrada */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .app-card {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .app-card:nth-child(1) { animation-delay: 0.1s; }
+        .app-card:nth-child(2) { animation-delay: 0.2s; }
+        .app-card:nth-child(3) { animation-delay: 0.3s; }
+        .app-card:nth-child(4) { animation-delay: 0.4s; }
+        .app-card:nth-child(5) { animation-delay: 0.5s; }
+        .app-card:nth-child(6) { animation-delay: 0.6s; }
+        .app-card:nth-child(7) { animation-delay: 0.7s; }
+        .app-card:nth-child(8) { animation-delay: 0.8s; }
+        .app-card:nth-child(9) { animation-delay: 0.9s; }
+        .app-card:nth-child(10) { animation-delay: 1s; }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="warning-banner">NÃO LEIA SE VOCÊ NÃO QUER UM ESTÁGIO!</div>
         <h1 class="hero-title">
-            CURRÍCULO:
-            <span>A PORTA PARA O MERCADO</span>
+            Seu Currículo
+            <span>É a Porta para o Mercado</span>
         </h1>
-        <p>Preparamos os 10 melhores caminhos para você brilhar.</p>
+        <p class="subtitle">Descubra os 10 melhores caminhos para conquistar seu primeiro estágio ou jovem aprendiz</p>
+        <a href="#apps" class="cta-button">Explorar Oportunidades</a>
     </header>
 
     <div class="container">
+        <!-- Stats Section -->
+        <div class="stats-section">
+            <div class="stat-card">
+                <div class="stat-number">10+</div>
+                <div class="stat-label">Plataformas de Oportunidades</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">2M+</div>
+                <div class="stat-label">Vagas Ativas</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Gratuito e Acessível</div>
+            </div>
+        </div>
+
+        <!-- Apps Section -->
+        <h2 class="section-title" id="apps">Principais Plataformas</h2>
+
         <div class="grid">
             <!-- 1. CIEE -->
             <div class="app-card">
-                <div>
+                <div class="app-card-content">
                     <h3>CIEE</h3>
-                    <p>O maior agente de integração do Brasil. Focado em estágios e programa Jovem Aprendiz com cursos gratuitos.</p>
+                    <p>O maior agente de integração do Brasil. Focado em estágios e programa Jovem Aprendiz com cursos gratuitos e orientação profissional.</p>
                 </div>
-                <a href="https://portal.ciee.org.br/" class="btn" target="_blank">Acessar Portal</a>
+                <a href="https://portal.ciee.org.br/" class="app-link" target="_blank">Acessar Portal</a>
             </div>
 
-            <!-- 2. Nube -->
+            <!-- 2. LinkedIn -->
             <div class="app-card">
-                <div>
-                    <h3>Nube</h3>
-                    <p>Especialista em vagas de estágio e aprendizagem. Interface moderna e muitos processos seletivos online.</p>
-                </div>
-                <a href="https://www.nube.com.br/" class="btn" target="_blank">Ver Vagas</a>
-            </div>
-
-            <!-- 3. LinkedIn -->
-            <div class="app-card">
-                <div>
+                <div class="app-card-content">
                     <h3>LinkedIn</h3>
-                    <p>A maior rede profissional do mundo. Essencial para networking e encontrar vagas em grandes empresas.</p>
+                    <p>A maior rede profissional do mundo. Essencial para networking, construir sua marca pessoal e encontrar vagas em grandes empresas.</p>
                 </div>
-                <a href="https://www.linkedin.com/" class="btn" target="_blank">Criar Perfil</a>
+                <a href="https://www.linkedin.com/" class="app-link" target="_blank">Criar Perfil</a>
+            </div>
+
+            <!-- 3. Nube -->
+            <div class="app-card">
+                <div class="app-card-content">
+                    <h3>Nube</h3>
+                    <p>Especialista em vagas de estágio e aprendizagem. Interface moderna, muitos processos seletivos online e feedback rápido.</p>
+                </div>
+                <a href="https://www.nube.com.br/" class="app-link" target="_blank">Ver Vagas</a>
             </div>
 
             <!-- 4. Companhia de Estágios -->
             <div class="app-card">
-                <div>
+                <div class="app-card-content">
                     <h3>Cia de Estágios</h3>
-                    <p>Recrutamento para as maiores multinacionais do país. Vagas de alto nível para estudantes.</p>
+                    <p>Recrutamento para as maiores multinacionais do país. Vagas de alto nível para estudantes com excelentes benefícios.</p>
                 </div>
-                <a href="https://www.ciadeestagios.com.br/" class="btn" target="_blank">Cadastrar</a>
+                <a href="https://www.ciadeestagios.com.br/" class="app-link" target="_blank">Cadastrar</a>
             </div>
 
             <!-- 5. Vagas.com -->
             <div class="app-card">
-                <div>
+                <div class="app-card-content">
                     <h3>Vagas.com</h3>
-                    <p>Uma das plataformas mais tradicionais. Filtros excelentes para primeiro emprego e estágio.</p>
+                    <p>Uma das plataformas mais tradicionais e confiáveis. Filtros excelentes para primeiro emprego, estágio e trainee.</p>
                 </div>
-                <a href="https://www.vagas.com.br/" class="btn" target="_blank">Buscar</a>
+                <a href="https://www.vagas.com.br/" class="app-link" target="_blank">Buscar</a>
             </div>
 
             <!-- 6. InfoJobs -->
             <div class="app-card">
-                <div>
+                <div class="app-card-content">
                     <h3>InfoJobs</h3>
-                    <p>Milhares de oportunidades diárias. Possui um aplicativo muito ágil para candidaturas rápidas.</p>
+                    <p>Milhares de oportunidades diárias atualizadas. Aplicativo ágil para candidaturas rápidas e notificações em tempo real.</p>
                 </div>
-                <a href="https://www.infojobs.com.br/" class="btn" target="_blank">Explorar</a>
+                <a href="https://www.infojobs.com.br/" class="app-link" target="_blank">Explorar</a>
             </div>
 
             <!-- 7. Indeed -->
             <div class="app-card">
-                <div>
+                <div class="app-card-content">
                     <h3>Indeed</h3>
-                    <p>Um buscador global que agrega vagas de diversos outros sites em um só lugar.</p>
+                    <p>Buscador global que agrega vagas de diversos outros sites em um único lugar. Alcance internacional de oportunidades.</p>
                 </div>
-                <a href="https://br.indeed.com/" class="btn" target="_blank">Pesquisar</a>
+                <a href="https://br.indeed.com/" class="app-link" target="_blank">Pesquisar</a>
             </div>
 
             <!-- 8. Super Estágios -->
             <div class="app-card">
-                <div>
+                <div class="app-card-content">
                     <h3>Super Estágios</h3>
-                    <p>Agente de integração com forte presença nacional e processos seletivos simplificados.</p>
+                    <p>Agente de integração com forte presença nacional. Mais de 2 milhões de estagiários agenciados com sucesso.</p>
                 </div>
-                <a href="https://www.superestagios.com.br/" class="btn" target="_blank">Inscrever-se</a>
+                <a href="https://www.superestagios.com.br/" class="app-link" target="_blank">Inscrever-se</a>
             </div>
 
             <!-- 9. Portal ABRE -->
             <div class="app-card">
-                <div>
+                <div class="app-card-content">
                     <h3>Portal ABRE</h3>
-                    <p>Agência Brasileira de Emprego e Estágio. Ótima para quem busca oportunidades regionais.</p>
+                    <p>Agência Brasileira de Emprego e Estágio. Ótima para quem busca oportunidades regionais e locais com suporte direto.</p>
                 </div>
-                <a href="https://www.portalabre.com.br/" class="btn" target="_blank">Acessar</a>
+                <a href="https://www.portalabre.com.br/" class="app-link" target="_blank">Acessar</a>
             </div>
 
-            <!-- 10. Wall Jobs -->
+            <!-- 10. Catho -->
             <div class="app-card">
-                <div>
-                    <h3>Wall Jobs</h3>
-                    <p>Plataforma focada em conectar talentos universitários a empresas inovadoras e startups.</p>
+                <div class="app-card-content">
+                    <h3>Catho</h3>
+                    <p>Plataforma tradicional com grande banco de vagas. Crie seu currículo online e envie para múltiplas oportunidades simultaneamente.</p>
                 </div>
-                <a href="https://www.walljobs.com.br/" class="btn" target="_blank">Conhecer</a>
-            </div>
-        </div>
-
-        <div class="qr-section">
-            <div class="qr-text">
-                <h2>NÃO ESCANEIE!</h2>
-                <p>A menos que você queira dicas exclusivas para o seu primeiro estágio.</p>
-                <p style="margin-top: 1rem; font-style: italic;">Prepare-se hoje, destaque-se amanhã!</p>
-            </div>
-            <div class="qr-placeholder">
-                <!-- QR Code placeholder similar ao da imagem -->
-                <svg width="150" height="150" viewBox="0 0 100 100">
-                    <rect width="100" height="100" fill="white"/>
-                    <path d="M10 10h20v20h-20zM70 10h20v20h-20zM10 70h20v20h-20z" fill="black"/>
-                    <rect x="35" y="35" width="30" height="30" fill="#333"/>
-                    <text x="50" y="55" font-family="Arial" font-size="8" text-anchor="middle" fill="white">TOTÓ</text>
-                </svg>
+                <a href="https://www.catho.com.br/" class="app-link" target="_blank">Conhecer</a>
             </div>
         </div>
     </div>
 
     <footer>
-        <p class="float-text">Turma do Totó</p>
+        <div class="footer-content">
+            <div class="footer-text">Turma do Totó</div>
+            <div class="footer-description">Prepare-se hoje, destaque-se amanhã! 🚀</div>
+        </div>
     </footer>
 
 </body>
