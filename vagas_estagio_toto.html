@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sua Oportunidade Começa Aqui! - Estágios e Jovem Aprendiz</title>
+    <style>
+        :root {
+            --primary-blue: #0047AB;
+            --accent-yellow: #FFD700;
+            --accent-orange: #FF8C00;
+            --bg-dark: #0a0a0a;
+            --text-white: #ffffff;
+            --card-bg: rgba(255, 255, 255, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Estilo inspirado na imagem (efeito de luz e contraste) */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 30%, rgba(0, 71, 171, 0.2) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 70%, rgba(255, 140, 0, 0.15) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        header {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, transparent 100%);
+            position: relative;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            margin-bottom: 1rem;
+            line-height: 1;
+        }
+
+        .hero-title span {
+            display: block;
+            color: var(--accent-yellow);
+            text-shadow: 2px 2px 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .warning-banner {
+            background-color: var(--accent-yellow);
+            color: #000;
+            padding: 0.5rem 2rem;
+            font-weight: bold;
+            transform: rotate(-2deg);
+            display: inline-block;
+            margin: 1rem 0;
+            font-size: 1.2rem;
+            box-shadow: 5px 5px 0px var(--accent-orange);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .app-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .app-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--primary-blue);
+        }
+
+        .app-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--accent-yellow);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .app-card h3 {
+            color: var(--accent-yellow);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .app-card p {
+            font-size: 0.95rem;
+            color: #ccc;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: var(--primary-blue);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            transition: background 0.3s;
+            border-bottom: 3px solid rgba(0,0,0,0.3);
+        }
+
+        .btn:hover {
+            background: #0056d2;
+        }
+
+        .qr-section {
+            margin-top: 5rem;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 3rem;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            border: 2px dashed rgba(255, 255, 255, 0.1);
+        }
+
+        .qr-text h2 {
+            font-size: 2rem;
+            color: var(--accent-orange);
+            margin-bottom: 1rem;
+        }
+
+        .qr-placeholder {
+            width: 200px;
+            height: 200px;
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px rgba(255,255,255,0.2);
+        }
+
+        .qr-placeholder img {
+            max-width: 100%;
+        }
+
+        footer {
+            margin-top: 5rem;
+            padding: 2rem;
+            text-align: center;
+            background: #000;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .float-text {
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            color: var(--accent-yellow);
+            letter-spacing: 2px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.5rem; }
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="warning-banner">NÃO LEIA SE VOCÊ NÃO QUER UM ESTÁGIO!</div>
+        <h1 class="hero-title">
+            CURRÍCULO:
+            <span>A PORTA PARA O MERCADO</span>
+        </h1>
+        <p>Preparamos os 10 melhores caminhos para você brilhar.</p>
+    </header>
+
+    <div class="container">
+        <div class="grid">
+            <!-- 1. CIEE -->
+            <div class="app-card">
+                <div>
+                    <h3>CIEE</h3>
+                    <p>O maior agente de integração do Brasil. Focado em estágios e programa Jovem Aprendiz com cursos gratuitos.</p>
+                </div>
+                <a href="https://portal.ciee.org.br/" class="btn" target="_blank">Acessar Portal</a>
+            </div>
+
+            <!-- 2. Nube -->
+            <div class="app-card">
+                <div>
+                    <h3>Nube</h3>
+                    <p>Especialista em vagas de estágio e aprendizagem. Interface moderna e muitos processos seletivos online.</p>
+                </div>
+                <a href="https://www.nube.com.br/" class="btn" target="_blank">Ver Vagas</a>
+            </div>
+
+            <!-- 3. LinkedIn -->
+            <div class="app-card">
+                <div>
+                    <h3>LinkedIn</h3>
+                    <p>A maior rede profissional do mundo. Essencial para networking e encontrar vagas em grandes empresas.</p>
+                </div>
+                <a href="https://www.linkedin.com/" class="btn" target="_blank">Criar Perfil</a>
+            </div>
+
+            <!-- 4. Companhia de Estágios -->
+            <div class="app-card">
+                <div>
+                    <h3>Cia de Estágios</h3>
+                    <p>Recrutamento para as maiores multinacionais do país. Vagas de alto nível para estudantes.</p>
+                </div>
+                <a href="https://www.ciadeestagios.com.br/" class="btn" target="_blank">Cadastrar</a>
+            </div>
+
+            <!-- 5. Vagas.com -->
+            <div class="app-card">
+                <div>
+                    <h3>Vagas.com</h3>
+                    <p>Uma das plataformas mais tradicionais. Filtros excelentes para primeiro emprego e estágio.</p>
+                </div>
+                <a href="https://www.vagas.com.br/" class="btn" target="_blank">Buscar</a>
+            </div>
+
+            <!-- 6. InfoJobs -->
+            <div class="app-card">
+                <div>
+                    <h3>InfoJobs</h3>
+                    <p>Milhares de oportunidades diárias. Possui um aplicativo muito ágil para candidaturas rápidas.</p>
+                </div>
+                <a href="https://www.infojobs.com.br/" class="btn" target="_blank">Explorar</a>
+            </div>
+
+            <!-- 7. Indeed -->
+            <div class="app-card">
+                <div>
+                    <h3>Indeed</h3>
+                    <p>Um buscador global que agrega vagas de diversos outros sites em um só lugar.</p>
+                </div>
+                <a href="https://br.indeed.com/" class="btn" target="_blank">Pesquisar</a>
+            </div>
+
+            <!-- 8. Super Estágios -->
+            <div class="app-card">
+                <div>
+                    <h3>Super Estágios</h3>
+                    <p>Agente de integração com forte presença nacional e processos seletivos simplificados.</p>
+                </div>
+                <a href="https://www.superestagios.com.br/" class="btn" target="_blank">Inscrever-se</a>
+            </div>
+
+            <!-- 9. Portal ABRE -->
+            <div class="app-card">
+                <div>
+                    <h3>Portal ABRE</h3>
+                    <p>Agência Brasileira de Emprego e Estágio. Ótima para quem busca oportunidades regionais.</p>
+                </div>
+                <a href="https://www.portalabre.com.br/" class="btn" target="_blank">Acessar</a>
+            </div>
+
+            <!-- 10. Wall Jobs -->
+            <div class="app-card">
+                <div>
+                    <h3>Wall Jobs</h3>
+                    <p>Plataforma focada em conectar talentos universitários a empresas inovadoras e startups.</p>
+                </div>
+                <a href="https://www.walljobs.com.br/" class="btn" target="_blank">Conhecer</a>
+            </div>
+        </div>
+
+        <div class="qr-section">
+            <div class="qr-text">
+                <h2>NÃO ESCANEIE!</h2>
+                <p>A menos que você queira dicas exclusivas para o seu primeiro estágio.</p>
+                <p style="margin-top: 1rem; font-style: italic;">Prepare-se hoje, destaque-se amanhã!</p>
+            </div>
+            <div class="qr-placeholder">
+                <!-- QR Code placeholder similar ao da imagem -->
+                <svg width="150" height="150" viewBox="0 0 100 100">
+                    <rect width="100" height="100" fill="white"/>
+                    <path d="M10 10h20v20h-20zM70 10h20v20h-20zM10 70h20v20h-20z" fill="black"/>
+                    <rect x="35" y="35" width="30" height="30" fill="#333"/>
+                    <text x="50" y="55" font-family="Arial" font-size="8" text-anchor="middle" fill="white">TOTÓ</text>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p class="float-text">Turma do Totó</p>
+    </footer>
+
+</body>
+</html>
