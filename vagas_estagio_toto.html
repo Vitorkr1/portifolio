@@ -185,6 +185,7 @@
             background: radial-gradient(circle at 30% 30%, rgba(255, 215, 0, 0.1) 0%, transparent 50%);
             opacity: 0;
             transition: opacity 0.4s ease;
+            pointer-events: none; /* Garante que o efeito não bloqueie cliques */
         }
 
         .app-card:hover {
@@ -194,6 +195,7 @@
             box-shadow: 
                 0 20px 60px rgba(0, 71, 171, 0.2),
                 0 0 40px rgba(255, 215, 0, 0.1);
+            cursor: pointer;
         }
 
         .app-card:hover::before {
@@ -239,6 +241,8 @@
             border: 1px solid rgba(255, 215, 0, 0.2);
             gap: 0.5rem;
             align-self: flex-start;
+            position: relative;
+            z-index: 10; /* Garante que o botão esteja sempre no topo */
         }
 
         .app-link:hover {
@@ -412,6 +416,7 @@
 
         .app-card {
             animation: fadeInUp 0.6s ease-out forwards;
+            cursor: pointer;
         }
 
         .app-card:nth-child(1) { animation-delay: 0.1s; }
@@ -459,93 +464,93 @@
 
         <div class="grid">
             <!-- 1. CIEE -->
-            <div class="app-card">
+            <div class="app-card" onclick="window.open('https://portal.ciee.org.br/', '_blank')">
                 <div class="app-card-content">
                     <h3>CIEE</h3>
                     <p>O maior agente de integração do Brasil. Focado em estágios e programa Jovem Aprendiz com cursos gratuitos e orientação profissional.</p>
                 </div>
-                <a href="https://portal.ciee.org.br/" class="app-link" target="_blank" rel="noopener noreferrer">Acessar Portal</a>
+                <a href="https://portal.ciee.org.br/" class="app-link" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Acessar Portal</a>
             </div>
 
             <!-- 2. LinkedIn -->
-            <div class="app-card">
+            <div class="app-card" onclick="window.open('https://www.linkedin.com/jobs/', '_blank')">
                 <div class="app-card-content">
                     <h3>LinkedIn</h3>
                     <p>A maior rede profissional do mundo. Essencial para networking, construir sua marca pessoal e encontrar vagas em grandes empresas.</p>
                 </div>
-                <a href="https://www.linkedin.com/jobs/" class="app-link" target="_blank" rel="noopener noreferrer">Criar Perfil</a>
+                <a href="https://www.linkedin.com/jobs/" class="app-link" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Criar Perfil</a>
             </div>
 
             <!-- 3. Nube -->
-            <div class="app-card">
+            <div class="app-card" onclick="window.open('https://www.nube.com.br/vagas', '_blank')">
                 <div class="app-card-content">
                     <h3>Nube</h3>
                     <p>Especialista em vagas de estágio e aprendizagem. Interface moderna, muitos processos seletivos online e feedback rápido.</p>
                 </div>
-                <a href="https://www.nube.com.br/vagas" class="app-link" target="_blank" rel="noopener noreferrer">Ver Vagas</a>
+                <a href="https://www.nube.com.br/vagas" class="app-link" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Ver Vagas</a>
             </div>
 
             <!-- 4. Companhia de Estágios -->
-            <div class="app-card">
+            <div class="app-card" onclick="window.open('https://www.ciadeestagios.com.br/vagas/', '_blank')">
                 <div class="app-card-content">
                     <h3>Cia de Estágios</h3>
                     <p>Recrutamento para as maiores multinacionais do país. Vagas de alto nível para estudantes com excelentes benefícios.</p>
                 </div>
-                <a href="https://www.ciadeestagios.com.br/vagas/" class="app-link" target="_blank" rel="noopener noreferrer">Cadastrar</a>
+                <a href="https://www.ciadeestagios.com.br/vagas/" class="app-link" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Cadastrar</a>
             </div>
 
             <!-- 5. Vagas.com -->
-            <div class="app-card">
+            <div class="app-card" onclick="window.open('https://www.vagas.com.br/vagas-de-estagio', '_blank')">
                 <div class="app-card-content">
                     <h3>Vagas.com</h3>
                     <p>Uma das plataformas mais tradicionais e confiáveis. Filtros excelentes para primeiro emprego, estágio e trainee.</p>
                 </div>
-                <a href="https://www.vagas.com.br/vagas-de-estagio" class="app-link" target="_blank" rel="noopener noreferrer">Buscar</a>
+                <a href="https://www.vagas.com.br/vagas-de-estagio" class="app-link" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Buscar</a>
             </div>
 
             <!-- 6. InfoJobs -->
-            <div class="app-card">
+            <div class="app-card" onclick="window.open('https://www.infojobs.com.br/vagas-de-emprego-estagio.aspx', '_blank')">
                 <div class="app-card-content">
                     <h3>InfoJobs</h3>
                     <p>Milhares de oportunidades diárias atualizadas. Aplicativo ágil para candidaturas rápidas e notificações em tempo real.</p>
                 </div>
-                <a href="https://www.infojobs.com.br/vagas-de-emprego-estagio.aspx" class="app-link" target="_blank" rel="noopener noreferrer">Explorar</a>
+                <a href="https://www.infojobs.com.br/vagas-de-emprego-estagio.aspx" class="app-link" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Explorar</a>
             </div>
 
             <!-- 7. Indeed -->
-            <div class="app-card">
+            <div class="app-card" onclick="window.open('https://br.indeed.com/q-est%C3%A1gio-vagas.html', '_blank')">
                 <div class="app-card-content">
                     <h3>Indeed</h3>
                     <p>Buscador global que agrega vagas de diversos outros sites em um único lugar. Alcance internacional de oportunidades.</p>
                 </div>
-                <a href="https://br.indeed.com/q-est%C3%A1gio-vagas.html" class="app-link" target="_blank" rel="noopener noreferrer">Pesquisar</a>
+                <a href="https://br.indeed.com/q-est%C3%A1gio-vagas.html" class="app-link" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Pesquisar</a>
             </div>
 
             <!-- 8. Super Estágios -->
-            <div class="app-card">
+            <div class="app-card" onclick="window.open('https://www.superestagios.com.br/index/', '_blank')">
                 <div class="app-card-content">
                     <h3>Super Estágios</h3>
                     <p>Agente de integração com forte presença nacional. Mais de 2 milhões de estagiários agenciados com sucesso.</p>
                 </div>
-                <a href="https://www.superestagios.com.br/index/" class="app-link" target="_blank" rel="noopener noreferrer">Inscrever-se</a>
+                <a href="https://www.superestagios.com.br/index/" class="app-link" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Inscrever-se</a>
             </div>
 
             <!-- 9. Portal ABRE -->
-            <div class="app-card">
+            <div class="app-card" onclick="window.open('https://www.portalabre.com.br/candidatos/vagas', '_blank')">
                 <div class="app-card-content">
                     <h3>Portal ABRE</h3>
                     <p>Agência Brasileira de Emprego e Estágio. Ótima para quem busca oportunidades regionais e locais com suporte direto.</p>
                 </div>
-                <a href="https://www.portalabre.com.br/candidatos/vagas" class="app-link" target="_blank" rel="noopener noreferrer">Acessar</a>
+                <a href="https://www.portalabre.com.br/candidatos/vagas" class="app-link" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Acessar</a>
             </div>
 
             <!-- 10. Catho -->
-            <div class="app-card">
+            <div class="app-card" onclick="window.open('https://www.catho.com.br/vagas/estagio/', '_blank')">
                 <div class="app-card-content">
                     <h3>Catho</h3>
                     <p>Plataforma tradicional com grande banco de vagas. Crie seu currículo online e envie para múltiplas oportunidades simultaneamente.</p>
                 </div>
-                <a href="https://www.catho.com.br/vagas/estagio/" class="app-link" target="_blank" rel="noopener noreferrer">Conhecer</a>
+                <a href="https://www.catho.com.br/vagas/estagio/" class="app-link" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Conhecer</a>
             </div>
         </div>
     </div>
